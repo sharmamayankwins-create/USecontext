@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "fullName": "Demo User",
+      "email": "demo@mail.com",
+      "phoneNumber": "9876543210",
+      "gender": "male",
+      "password": "123456",
+      "profileImage": ""
+    },
+    {
+      "id": "1758624412457",
+      "fullName": "134567890",
+      "email": "mayankaryan309@gmail.com",
+      "password": "Mayank@1",
+      "phoneNumber": "7528857335",
+      "gender": "male",
+      "terms": true,
+      "profileImage": null
+    },
+    {
+      "fullName": "Mohit ",
+      "email": "aryan@yahoo.com",
+      "password": "Mayank1",
+      "phoneNumber": "7528857335",
+      "gender": "male",
+      "terms": true,
+      "id": "1758780264700",
+      "profileImage": null
+    }
+  ]
+}
