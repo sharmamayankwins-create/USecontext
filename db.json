@@ -11,7 +11,7 @@
     },
     {
       "id": "1758624412457",
-      "fullName": "134567890",
+      "fullName": "Mayank",
       "email": "mayankaryan309@gmail.com",
       "password": "Mayank@1",
       "phoneNumber": "7528857335",
@@ -27,6 +27,16 @@
       "gender": "male",
       "terms": true,
       "id": "1758780264700",
+      "profileImage": null
+    },
+    {
+      "fullName": "Dits innovation",
+      "email": "dits@gmail.com",
+      "password": "Mayank1",
+      "phoneNumber": "7528857335",
+      "gender": "female",
+      "terms": true,
+      "id": "1758782133625",
       "profileImage": null
     }
   ]

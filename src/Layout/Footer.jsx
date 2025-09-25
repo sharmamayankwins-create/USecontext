@@ -23,9 +23,9 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
             <div className="flex gap-4 text-xl">
-              <a href="#" className="hover:text-indigo-600">🌐</a>
-              <a href="#" className="hover:text-indigo-600">🐦</a>
-              <a href="#" className="hover:text-indigo-600">📸</a>
+              <a href="#" className="hover:text-indigo-600">GLOBE</a>
+              <a href="#" className="hover:text-indigo-600">Twitter</a>
+              <a href="#" className="hover:text-indigo-600">Instagram</a>
             </div>
           </div>
         </div>

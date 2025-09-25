@@ -80,12 +80,12 @@ function Profile() {
   if (!currentUser) return null;
  
   return (
-    <div className="min-h-screen flex flex-col bg-[url(./background.jpg)] bg-cover bg-center relative">
+      <div className="min-h-screen flex flex-col bg-[url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80)] bg-cover bg-center relative">
       <div className="absolute inset-0 bg-white/20"></div>
  
       {/* Navbar */}
       <nav className="relative flex items-center justify-between px-6 py-4 bg-white/40 backdrop-blur-sm shadow-md border-b border-gray-200">
-        <img src="./logo1.jpg" alt="logo" className="w-10 h-10" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png"alt="logo" className="w-10 h-10" />
         <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
           <li><a href="/webpage" className="hover:text-indigo-600">Home</a></li>
           <li><a href="#" className="hover:text-indigo-600">About</a></li>
