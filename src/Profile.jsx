@@ -1,15 +1,16 @@
-
 import { useEffect, useState } from "react";
 import { Form, Input, Button, Select, message, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "./UserContext";
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUserData, logout } from './Store/ userSlice';
 import Index from "./Pages/Profile/Index";
  
 function Profile() {
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const { currentUser, updateUser, logout } = useUser();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector(state => state.user);
   const [profileImage, setProfileImage] = useState(null);
  
   // Populate form from currentUser
@@ -64,8 +65,15 @@ function Profile() {
  
   const handleUpdate = async () => {
     const values = form.getFieldsValue();
-    await updateUser({ ...values, profileImage });
-    message.success("Profile updated successfully 🚀");
+    try {
+      await dispatch(updateUserData({ 
+        id: currentUser.id, 
+        data: { ...currentUser, ...values, profileImage } 
+      })).unwrap();
+      message.success("Profile updated successfully 🚀");
+    } catch {
+      message.error("Failed to update profile");
+    }
   };
  
   const handleCancel = () => {
@@ -73,19 +81,19 @@ function Profile() {
   };
  
   const handleLogout = () => {
-    logout();
+    dispatch(logout());
     navigate("/login");
   };
  
   if (!currentUser) return null;
  
   return (
-      <div className="min-h-screen flex flex-col bg-[url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80)] bg-cover bg-center relative">
+    <div className="min-h-screen flex flex-col bg-[url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80)] bg-cover bg-center relative">
       <div className="absolute inset-0 bg-white/20"></div>
  
       {/* Navbar */}
       <nav className="relative flex items-center justify-between px-6 py-4 bg-white/40 backdrop-blur-sm shadow-md border-b border-gray-200">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png"alt="logo" className="w-10 h-10" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt="logo" className="w-10 h-10" />
         <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
           <li><a href="/webpage" className="hover:text-indigo-600">Home</a></li>
           <li><a href="#" className="hover:text-indigo-600">About</a></li>
@@ -113,8 +121,7 @@ function Profile() {
           </ul>
         </aside>
 
-
-       <Index/>
+        <Index/>
       </div>
  
       {/* Footer */}
@@ -150,5 +157,3 @@ function Profile() {
 }
  
 export default Profile;
- 
- 

@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Input, Button, Radio, Checkbox, message } from "antd";
 import { useNavigate, Link } from "react-router-dom";
-import { useUser } from "./UserContext";
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser, fetchUsers } from './Store/ userSlice';
 
 function Signup() {
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const { users, signup } = useUser();   
+  const dispatch = useDispatch();
+  const { users } = useSelector(state => state.user);
   const [loading, setLoading] = useState(false);
 
-  const onFinish = (values) => {
+  // Load users on mount
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  const onFinish = async (values) => {
     setLoading(true);
 
     if (users.some(u => u.email.toLowerCase() === values.email.toLowerCase())) {
@@ -21,12 +28,16 @@ function Signup() {
     const { confirm_password, ...userData } = values;
     userData.id = Date.now();
 
-    signup(userData);
-
-    message.success("Account created 🚀");
-    form.resetFields();
-    navigate("/login");
-    setLoading(false);
+    try {
+      await dispatch(signupUser(userData)).unwrap();
+      message.success("Account created");
+      form.resetFields();
+      navigate("/login");
+    } catch {
+      message.error("Signup failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

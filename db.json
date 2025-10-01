@@ -10,34 +10,23 @@
       "profileImage": ""
     },
     {
-      "id": "1758624412457",
-      "fullName": "Mayank",
+      "fullName": "Mayank sharma",
       "email": "mayankaryan309@gmail.com",
       "password": "Mayank@1",
       "phoneNumber": "7528857335",
       "gender": "male",
       "terms": true,
+      "id": "1758782802012",
       "profileImage": null
     },
     {
-      "fullName": "Mohit ",
+      "id": "1759303695675",
+      "fullName": "Mayank sharma",
       "email": "aryan@yahoo.com",
-      "password": "Mayank1",
+      "password": "Mayank@1",
       "phoneNumber": "7528857335",
       "gender": "male",
-      "terms": true,
-      "id": "1758780264700",
-      "profileImage": null
-    },
-    {
-      "fullName": "Dits innovation",
-      "email": "dits@gmail.com",
-      "password": "Mayank1",
-      "phoneNumber": "7528857335",
-      "gender": "female",
-      "terms": true,
-      "id": "1758782133625",
-      "profileImage": null
+      "terms": true
     }
   ]
 }

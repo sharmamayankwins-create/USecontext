@@ -1,20 +1,24 @@
 import { useState } from "react";
 import { Form, Input, Button, message } from "antd";
 import { useNavigate, Link } from "react-router-dom";
-import { useUser } from "./UserContext";
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from './Store/ userSlice';
 
 function Login() {
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const { login } = useUser(); 
+  const dispatch = useDispatch();
+  const { users } = useSelector(state => state.user);
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const success = await login(values.email, values.password);
-      if (success) {
-        message.success("Login successful 🚀");
+      const user = users.find(u => u.email === values.email && u.password === values.password);
+      
+      if (user) {
+        dispatch(login({ email: values.email, password: values.password }));
+        message.success("Login successful");
         navigate("/webpage");
       } else {
         message.error("Invalid email or password");
@@ -67,7 +71,7 @@ function Login() {
         </Form.Item>
 
         <p className="text-center text-gray-600 text-sm">
-          Don’t have an account?{" "}
+          Don't have an account?{" "}
           <Link to="/signup" className="text-indigo-600 font-medium hover:underline">
             Sign Up
           </Link>

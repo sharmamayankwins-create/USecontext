@@ -1,14 +1,15 @@
 import { useState } from "react";
-import {  Button } from "antd";
+import { Button } from "antd";
 import { Link } from "react-router-dom";
-import { useUser } from "../UserContext";
-const  Sidebar = () => {
+import { useSelector } from 'react-redux';
 
+const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const { currentUser, logout } = useUser();
-    return (
-      <div>
-        <div className="relative flex flex-1">
+  const { currentUser } = useSelector(state => state.user);
+
+  return (
+    <div>
+      <div className="relative flex flex-1">
         {sidebarOpen && (
           <aside className="w-56 bg-white/40 backdrop-blur-sm border-r border-gray-200 shadow-md">
             <ul className="p-6 space-y-4 font-medium text-gray-700">
@@ -42,10 +43,8 @@ const  Sidebar = () => {
           </div>
         </main>
       </div>
+    </div>
+  );
+};
 
-      </div>
-    )
-  }
-
-
-export default Sidebar
+export default Sidebar;
